@@ -40,3 +40,16 @@ The system uses the following database tables:
    ```bash
    git clone https://github.com/your-repo/hospital-dbms.git
    cd hospital-dbms
+
+2. Set up the PostgreSQL database:
+- Create a database named Hospital.
+- Update database credentials in app.py
+```
+psycopg2.connect(
+    host="localhost",
+    dbname="Hospital",
+    user="your_username",
+    password="your_password",
+    port=5432
+)
+
