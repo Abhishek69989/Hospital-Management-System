@@ -61,3 +61,8 @@ The system uses the following database tables:
 - Manage patients, staff, rooms, and appointments through intuitive interfaces.
 - Monitor lab tests and billing details.
 
+# License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+# Contributors
+A S Abhishek
