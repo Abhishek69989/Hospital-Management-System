@@ -33,7 +33,7 @@ The system uses the following database tables:
 8. Billing
 
 ### ER Diagram
-[(UML_Diagram.png)]
+![UML Diagram](UML_Diagram.png)
 
 ## Setup
 1. Clone the repository:
