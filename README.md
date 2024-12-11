@@ -53,11 +53,9 @@ The system uses the following database tables:
         password="your_password",
         port=5432
     )
-
 3. Run the application:
    ```
      python app.py
-
 # Usage
 - Use the navigation bar to access different functionalities.
 - Manage patients, staff, rooms, and appointments through intuitive interfaces.
