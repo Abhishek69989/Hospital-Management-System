@@ -56,13 +56,13 @@ The system uses the following database tables:
 3. Run the application:
    ```
      python app.py
-# Usage
+## Usage
 - Use the navigation bar to access different functionalities.
 - Manage patients, staff, rooms, and appointments through intuitive interfaces.
 - Monitor lab tests and billing details.
 
-# License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-# Contributors
-A S Abhishek
+## Author
+A S Abhishek - [GitHub](https://github.com/abhishek12345678900987654)
