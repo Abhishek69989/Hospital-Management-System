@@ -35,7 +35,7 @@ The system uses the following database tables:
 ### ER Diagram
 [Include the ER Diagram here if available]
 
-## Installation
+## Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo/hospital-dbms.git
@@ -44,12 +44,22 @@ The system uses the following database tables:
 2. Set up the PostgreSQL database:
 - Create a database named Hospital.
 - Update database credentials in app.py
-```
-psycopg2.connect(
-    host="localhost",
-    dbname="Hospital",
-    user="your_username",
-    password="your_password",
-    port=5432
-)
+- Setup Database Credentials:
+  ```
+    psycopg2.connect(
+        host="localhost",
+        dbname="Hospital",
+        user="your_username",
+        password="your_password",
+        port=5432
+    )
+
+3. Run the application:
+   ```
+     python app.py
+
+# Usage
+- Use the navigation bar to access different functionalities.
+- Manage patients, staff, rooms, and appointments through intuitive interfaces.
+- Monitor lab tests and billing details.
 
