@@ -62,7 +62,7 @@ The system uses the following database tables:
 - Monitor lab tests and billing details.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## Author
 A S Abhishek - [GitHub](https://github.com/abhishek12345678900987654)
