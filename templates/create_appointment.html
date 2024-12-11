@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Create Appointment{% endblock %}
+{% block content %}
+    <h2>Create Appointment</h2>
+    <form action="{{ url_for('create_appointment') }}" method="POST">
+        <label for="patient_id">Select Patient:</label>
+        <select id="patient_id" name="patient_id" required>
+            <option value="" disabled selected>Select Patient</option>
+            {% for patient in patients %}
+                <option value="{{ patient[0] }}">{{ patient[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="doctor_id">Select Doctor:</label>
+        <select id="doctor_id" name="doctor_id" required>
+            <option value="" disabled selected>Select Doctor</option>
+            {% for doctor in doctors %}
+                <option value="{{ doctor[0] }}">{{ doctor[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
+
+        <label for="diagnosis">Symptoms:</label>
+        <textarea id="diagnosis" name="diagnosis" required></textarea>
+
+        <label for="prescription">History of Medication:</label>
+        <textarea id="prescription" name="prescription" required></textarea>
+ 
+        <input type="submit" value="Create Appointment">
+    </form>
+{% endblock %}

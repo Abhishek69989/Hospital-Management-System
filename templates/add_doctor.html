@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add Doctor{% endblock %}
+{% block content %}
+    <h2>Add Doctor</h2>
+    <form action="{{ url_for('add_doctor') }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="specialty">Specialty:</label>
+        <input type="text" id="specialty" name="specialty" required>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+
+        <label for="room_id">Room:</label>
+        <select id="room_id" name="room_id" required>
+            {% for room in available_rooms %}
+                <option value="{{ room[0] }}">Room {{ room[0] }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Add Doctor">
+    </form>
+{% endblock %}

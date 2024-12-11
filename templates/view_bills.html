@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}View Bills{% endblock %}
+
+{% block content %}
+<h2>All Bills</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    <div class="container mt-4">
+        {% for category, message in messages %}
+            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
+<table>
+    <tr>
+        <th>Bill ID</th>
+        <th>Patient ID</th>
+        <th>Appointment ID</th>
+        <th>Total Amount</th>
+        <th>Payment Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for bill in bills %}
+    <tr>
+        <td>{{ bill[0] }}</td>
+        <td>{{ bill[1] }}</td>
+        <td>{{ bill[2] }}</td>
+        <td>{{ bill[3] }}</td>
+        <td>{{ bill[4] }}</td>
+        <td>
+            {% if bill[4] == 'Pending' %}
+            <form method="POST" action="{{ url_for('pay_bill', bill_id=bill[0]) }}">
+                <input type="submit" value="Mark as Paid">
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ url_for('view_unpaid_bills') }}">View Unpaid Bills</a>
+{% endblock %}

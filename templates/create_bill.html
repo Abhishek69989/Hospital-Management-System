@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Bill{% endblock %}
+
+{% block content %}
+<h2>Create Bill</h2>
+
+<form method="POST" action="{{ url_for('create_bill') }}">
+    <label for="patient_id">Patient:</label>
+    <select id="patient_id" name="patient_id" required>
+        <option value="" disabled selected>Select Patient</option>
+        {% for patient in patients %}
+        <option value="{{ patient[0] }}">{{ patient[0] }} - {{ patient[1] }}</option> <!-- Patient_ID and Name -->
+        {% endfor %}
+    </select>
+
+    <label for="appointment_id">Appointment:</label>
+    <select id="appointment_id" name="appointment_id" required>
+        <option value="" disabled selected>Select Appointment</option>
+        {% for appointment in appointments %}
+        <option value="{{ appointment[0] }}">{{ appointment[0] }} - {{ appointment[1] }}</option> <!-- Appointment_ID and Date -->
+        {% endfor %}
+    </select>
+
+    <label for="total_amount">Total Amount:</label>
+    <input type="number" id="total_amount" name="total_amount" placeholder="Enter total amount" required>
+
+    <label for="payment_status">Payment Status:</label>
+    <select id="payment_status" name="payment_status" required>
+        <option value="" disabled selected>Select Status</option>
+        <option value="Paid">Paid</option>
+        <option value="Pending">Pending</option>
+    </select>
+
+    <input type="submit" value="Create Bill">
+</form>
+
+<!-- {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+                <li class="flash-{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %} -->
+{% endblock %}

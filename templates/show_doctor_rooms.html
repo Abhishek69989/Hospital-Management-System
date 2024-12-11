@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}All Doctor Rooms{% endblock %}
+{% block content %}
+    <h2>All Doctor Rooms</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>Room Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room[0] }}</td>
+                    <td>{{ room[1] }}</td>
+                    <td>{{ room[2] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

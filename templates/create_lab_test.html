@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Lab Test{% endblock %}
+
+{% block content %}
+<h2>Create Lab Test</h2>
+
+<form method="POST" action="{{ url_for('create_lab_test') }}">
+    <label for="patient_id">Patient:</label>
+    <select id="patient_id" name="patient_id" required>
+        <option value="" disabled selected>Select Patient</option>
+        {% for patient in patients %}
+        <option value="{{ patient[0] }}">{{ patient[1] }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="doctor_id">Doctor:</label>
+    <select id="doctor_id" name="doctor_id" required>
+        <option value="" disabled selected>Select Doctor</option>
+        {% for doctor in doctors %}
+        <option value="{{ doctor[0] }}">{{ doctor[1] }}</option> 
+        {% endfor %}
+    </select>
+
+    <label for="test_type">Test Type:</label>
+    <select id="test_type" name="test_type" required>
+        <option value="" disabled selected>Select Test Type</option>
+        {% for test in test_types %}
+        <option value="{{ test }}">{{ test }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="test_date">Test Date:</label>
+    <input type="date" id="test_date" name="test_date" required>
+
+    <input type="submit" value="Create Lab Test">
+</form>
+{% endblock %}

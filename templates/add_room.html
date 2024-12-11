@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Add Room{% endblock %}
+{% block content %}
+    <h2>Add Room</h2>
+    <form action="{{ url_for('add_room') }}" method="POST">
+        <label for="room_type">Room Type:</label>
+        <select id="room_type" name="room_type" required>
+            <option value="" disabled selected>Select Room Type</option>
+            <option value="Sharing Ward">Sharing Ward</option>
+            <option value="Intensive Care Unit (ICU)">Intensive Care Unit (ICU)</option>
+            <option value="Private Room">Private Room</option>
+            <option value="Suite">Suite</option>
+            <option value="Special Ward">Special Ward</option>
+            <option value="Deluxe Room">Deluxe Room</option>
+        </select>
+
+        <label for="nurse_id">Nurse ID:</label>
+        <select id="nurse_id" name="nurse_id" required>
+            {% for nurse in nurses %}
+                <option value="{{ nurse[0] }}">Nurse {{ nurse[0] }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Add Room">
+    </form>
+{% endblock %}

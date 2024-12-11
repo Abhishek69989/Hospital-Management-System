@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Check Room Availability{% endblock %}
+{% block content %}
+    <h2>Available Rooms</h2>
+    {% if available_rooms %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Room ID</th>
+                    <th>Room Type</th>
+                    <th>Nurse ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in available_rooms %}
+                    <tr>
+                        <td>{{ room[0] }}</td>
+                        <td>{{ room[1] }}</td>
+                        <td>{{ room[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No rooms are currently available.</p>
+    {% endif %}
+{% endblock %}

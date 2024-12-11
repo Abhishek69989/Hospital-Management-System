@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Search Doctor{% endblock %}
+{% block content %}
+    <h2>Search Doctor</h2>
+
+    <form action="{{ url_for('search_doctors') }}" method="POST">
+        <label for="search_term">Search by Name or Doctor ID:</label>
+        <input type="text" id="search_term" name="search_term" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if doctors %}
+        <h3>Search Results:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Name</th>
+                    <th>Specialty</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                    <tr>
+                        <td>{{ doctor[0] }}</td>
+                        <td>{{ doctor[1] }}</td>
+                        <td>{{ doctor[2] }}</td>
+                        <td>{{ doctor[3] }}</td>
+                        <td>
+                            <form action="{{ url_for('remove_doctor', doctor_id=doctor[0]) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-remove">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif request.method == 'POST' %}
+        <p>No doctors found matching the search criteria.</p>
+    {% endif %}
+{% endblock %}

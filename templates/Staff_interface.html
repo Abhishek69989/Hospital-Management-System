@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Staff Operations - Hospital Management System{% endblock %}
+
+{% block content %}
+<div class="operations-container">
+    <div class="operation-section">
+        <h2>Doctor Management</h2>
+        <div class="button-group">
+            <a class="operation-button" href="{{ url_for('add_doctor') }}">Add Doctor</a>
+            <a class="operation-button" href="{{ url_for('show_doctors') }}">Available Doctors</a>
+            <a class="operation-button" href="{{ url_for('search_doctors') }}">Search Doctors</a>
+            <a class="operation-button" href="{{ url_for('add_doctor_room') }}">Add Doctor Room</a>
+            <a class="operation-button" href="{{ url_for('show_doctor_rooms') }}">Show Doctor Rooms</a>
+        </div>
+    </div>
+
+    <div class="operation-section">
+        <h2>Nurse Management</h2>
+        <div class="button-group">
+            <a class="operation-button" href="{{ url_for('add_nurse') }}">Add Nurse</a>
+            <a class="operation-button" href="{{ url_for('show_nurses') }}">Available Nurses</a>
+            <a class="operation-button" href="{{ url_for('search_nurse') }}">Search Nurses</a>
+        </div>
+    </div>
+
+    <div class="operation-section">
+        <h2>Room Management </h2>
+        <div class="button-group">
+            <a class="operation-button" href="{{ url_for('add_room') }}">Add Room</a>
+            <a class="operation-button" href="{{ url_for('show_rooms') }}">Show Rooms</a>
+            <a class="operation-button" href="{{ url_for('check_room_availability') }}">Check Room Availability</a>
+        </div>
+    </div>
+
+    <div class="operation-section">
+        <h2>Lab Test Management</h2>
+        <div class="button-group">
+            <a class="operation-button" href="{{ url_for('create_lab_test') }}">Create Lab Test</a>
+            <a class="operation-button" href="{{ url_for('view_lab_tests') }}">View Lab Tests</a>
+        </div>
+    </div>
+
+    <div class="operation-section">
+        <h2>Bill Management</h2>
+        <div class="button-group">
+            <a class="operation-button" href="{{ url_for('create_bill') }}">Create Bill</a>
+            <a class="operation-button" href="{{ url_for('view_bills') }}">View Bills</a>
+            <a class="operation-button" href="{{ url_for('view_unpaid_bills') }}">View Unpaid Bills</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

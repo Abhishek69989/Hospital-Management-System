@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Nurses List
+{% endblock %}
+
+{% block content %}
+    <h1>Nurses List</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-4">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nurse ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nurse in nurses %}
+            <tr>
+                <td>{{ nurse[0] }}</td>
+                <td>{{ nurse[1] }}</td>
+                <td>{{ nurse[2] }}</td>
+                <td>
+                    <form action="{{ url_for('remove_nurse', nurse_id=nurse[0]) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this nurse?');">
+                        <button type="submit" class="btn-remove">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

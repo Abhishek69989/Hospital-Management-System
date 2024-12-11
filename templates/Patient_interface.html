@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Patients - Hospital Management System{% endblock %}
+
+{% block content %}
+    <div class="patients-container">
+        <nav>
+            <ul class="patients-operations-list">
+                <li><a href="{{ url_for('add_patient') }}" class="operation-button">Add Patient</a></li>
+                <li><a href="{{ url_for('search_patient') }}" class="operation-button">Search Patient</a></li>
+                <li><a href="{{ url_for('show_patients') }}" class="operation-button">Admitted Patients</a></li>
+                <li><a href="{{ url_for('view_appointments') }}" class="operation-button">View Appointments</a></li>
+                <li><a href="{{ url_for('create_appointment') }}" class="operation-button">Create Appointments</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

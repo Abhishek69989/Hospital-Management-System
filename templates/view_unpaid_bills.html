@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}View Unpaid Bills{% endblock %}
+
+{% block content %}
+<h2>Unpaid Bills</h2>
+
+<table>
+    <tr>
+        <th>Bill ID</th>
+        <th>Patient ID</th>
+        <th>Appointment ID</th>
+        <th>Total Amount</th>
+        <th>Payment Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for bill in unpaid_bills %}
+    <tr>
+        <td>{{ bill[0] }}</td>
+        <td>{{ bill[1] }}</td>
+        <td>{{ bill[2] }}</td>
+        <td>{{ bill[3] }}</td>
+        <td>{{ bill[4] }}</td>
+        <td>
+            <form method="POST" action="{{ url_for('pay_bill', bill_id=bill[0]) }}">
+                <input type="submit" class="btn-remove" value="Mark as Paid">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{{ url_for('view_bills') }}">View All Bills</a>
+{% endblock %}
